@@ -1,0 +1,53 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    // "airbnb",
+    // "airbnb/hooks",
+    // "airbnb-typescript",
+    "plugin:eslint-comments/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": [
+    "prettier",
+    "import",
+    "react"
+  ],
+  "rules": {
+    "react/function-component-definition": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    "react/jsx-props-no-spreading": [0],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          ".storybook/**/*.js",
+          "config-overrides.js",
+          "src/setupTests.ts",
+          "src/components/**/*.stories.tsx",
+          "src/**/*.test.{ts,tsx}",
+          "tests/**/*.ts",
+          "tests-examples/**/*.ts"
+        ]
+      }
+    ],
+    "prettier/prettier": ["error"]
+  },
+  "globals": {
+    "browser": "readonly",
+    "context": "readonly",
+    "page": "readonly",
+    "PlaywrightTest": "readonly"
+  }
+}
