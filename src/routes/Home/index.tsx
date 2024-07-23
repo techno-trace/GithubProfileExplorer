@@ -10,7 +10,7 @@ const Home = () => {
   const { username } = useParams<{ username: string }>();
 
   return (
-    <main className={`bg-gray-50 dark:bg-slate-900 ${darkMode && 'dark'}`}>
+    <main data-testid='ghapp-main' className={`bg-gray-50 dark:bg-slate-900 ${darkMode && 'dark'}`}>
       <div className='min-h-screen flex flex-col'>
         <Header />
         {username ? <Outlet /> : <Hero />}

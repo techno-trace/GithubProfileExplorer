@@ -1,11 +1,11 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 import Home from './Home';
 import Profile from './Profile';
 import NotFound from './NotFound';
 import SearchResults from './SearchResults';
 
-const BrowserRouter = createBrowserRouter([
+const routes = [
   {
     path: '/',
     element: <Home />,
@@ -27,6 +27,9 @@ const BrowserRouter = createBrowserRouter([
     path: '*',
     element: <NotFound />,
   },
-]);
+];
+
+const BrowserRouter =
+  import.meta.env.MODE === 'production' ? createHashRouter(routes) : createBrowserRouter(routes);
 
 export default BrowserRouter;

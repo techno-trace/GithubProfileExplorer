@@ -58,6 +58,7 @@ const Profile = () => {
             <div className='lg:col-span-3 lg:row-end-1'>
               <div className='aspect-w-3 aspect-h-3 overflow-hidden rounded-lg'>
                 <img
+                  data-testid='ghapp-profile-avatar'
                   src={user.avatar_url}
                   alt='avatar'
                   className='object-cover object-center shadow-lg'
@@ -68,7 +69,10 @@ const Profile = () => {
             <div className='mx-auto mt-14 max-w-2xl sm:mt-16 lg:col-span-4 lg:row-span-2 lg:row-end-2 lg:mt-0 lg:max-w-none'>
               <div className='flex flex-col-reverse'>
                 <div className='mt-4'>
-                  <h1 className='text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl'>
+                  <h1
+                    data-testid='ghapp-profile-name'
+                    className='text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl'
+                  >
                     {user.name}{' '}
                     <a className='text-sky-600' href={`https://github.com/${user.login}`}>
                       @{user.login}
@@ -80,11 +84,19 @@ const Profile = () => {
                   </h2>
                   <div className='mt-2 text-base flex flex-col'>
                     {user.email && (
-                      <a className='text-sky-600' href={`mailto:${user.email}`}>
+                      <a
+                        data-testid='ghapp-profile-email'
+                        className='text-sky-600'
+                        href={`mailto:${user.email}`}
+                      >
                         {user.email}
                       </a>
                     )}
-                    <a className='text-sky-600' href={`${user.blog}`}>
+                    <a
+                      data-testid='ghapp-profile-blog'
+                      className='text-sky-600'
+                      href={`${user.blog}`}
+                    >
                       {user.blog}
                     </a>
                   </div>
@@ -110,7 +122,9 @@ const Profile = () => {
                 </div>
               </div>
 
-              <p className='mt-6 text-gray-500 dark:text-gray-300'>{user.bio}</p>
+              <p data-testid='ghapp-profile-bio' className='mt-6 text-gray-500 dark:text-gray-300'>
+                {user.bio}
+              </p>
 
               <div className='mt-2 pt-2'>
                 <div className='prose prose-sm mt-4 text-gray-500 dark:text-gray-300'>
@@ -194,6 +208,7 @@ const Profile = () => {
                 <div className='border-transparent'>
                   <TabList className='-mb-px flex space-x-8'>
                     <Tab
+                      data-testid='ghapp-tab-repositories'
                       className={({ selected }) =>
                         classNames(
                           selected
@@ -206,6 +221,7 @@ const Profile = () => {
                       Repositories
                     </Tab>
                     <Tab
+                      data-testid='ghapp-tab-followers'
                       className={({ selected }) =>
                         classNames(
                           selected
@@ -218,6 +234,7 @@ const Profile = () => {
                       Followers
                     </Tab>
                     <Tab
+                      data-testid='ghapp-tab-organizations'
                       className={({ selected }) =>
                         classNames(
                           selected
@@ -232,11 +249,11 @@ const Profile = () => {
                   </TabList>
                 </div>
                 <TabPanels as={Fragment}>
-                  <TabPanel className='-mb-10'>
+                  <TabPanel data-testid='ghapp-panel-repositories' className='-mb-10'>
                     <h3 className='sr-only'>Repositories</h3>
 
                     {repositories.map((repo) => (
-                      <div key={repo.id} className='flex flex-col'>
+                      <div data-testid='ghapp-repo-card' key={repo.id} className='flex flex-col'>
                         <div className='flex space-x-4 text-sm text-gray-500'>
                           <div className='flex-none py-10'>
                             <a href={repo.html_url}>
@@ -316,11 +333,12 @@ const Profile = () => {
                     ))}
                   </TabPanel>
 
-                  <TabPanel className='text-sm text-gray-500'>
+                  <TabPanel data-testid='ghapp-panel-followers' className='text-sm text-gray-500'>
                     <h3 className='sr-only'>Followers</h3>
 
                     {followers.map((user) => (
                       <div
+                        data-testid='ghapp-follower-card'
                         key={user.id}
                         className='flex space-x-4 text-sm text-gray-500 dark:text-gray-300'
                       >
@@ -352,11 +370,18 @@ const Profile = () => {
                     ))}
                   </TabPanel>
 
-                  <TabPanel className='text-sm text-gray-500 dark:text-gray-300'>
+                  <TabPanel
+                    data-testid='ghapp-panel-organizations'
+                    className='text-sm text-gray-500 dark:text-gray-300'
+                  >
                     <h3 className='sr-only'>Organizations</h3>
 
                     {organizations.map((organization) => (
-                      <div key={organization.id} className='flex space-x-4'>
+                      <div
+                        data-testid='ghapp-org-card'
+                        key={organization.id}
+                        className='flex space-x-4'
+                      >
                         <div className='flex-none py-10'>
                           <a href={`http://github.com/${organization.login}`}>
                             <img

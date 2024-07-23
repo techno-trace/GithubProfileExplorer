@@ -12,14 +12,18 @@ const UserCard: React.FC<UserProfile> = ({
   following,
   public_repos,
 }) => (
-  <div className='flex flex-col justify-center'>
+  <div data-testid='ghapp-user-card' className='flex flex-col justify-center'>
     <div className='relative flex flex-col md:flex-row md:space-x-2 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-gray-200 dark:border-slate-400 bg-white dark:bg-slate-900'>
       <div className='w-full md:w-1/3 grid place-items-center'>
-        <Link to={`/profiles/${login}`}>
+        <Link data-testid='ghapp-user-card-profile-link-img' to={`/profiles/${login}`}>
           <img src={avatar_url} alt='tailwind logo' className='rounded-md shadow' />
         </Link>
         <p className='text-gray-500 font-medium hidden md:block dark:text-gray-300'>
-          <Link preventScrollReset={false} to={`/profiles/${login}`}>
+          <Link
+            preventScrollReset={false}
+            data-testid='ghapp-user-card-profile-link-username'
+            to={`/profiles/${login}`}
+          >
             @{login}
           </Link>
         </p>

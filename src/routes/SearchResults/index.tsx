@@ -33,7 +33,10 @@ const SearchResults = () => {
   }, [byusername, currentPage]);
 
   return (
-    <main className={`bg-gray-50 dark:bg-slate-900 ${darkMode && 'dark'}`}>
+    <main
+      data-testid='ghapp-search-page-main'
+      className={`bg-gray-50 dark:bg-slate-900 ${darkMode && 'dark'}`}
+    >
       <div className='min-h-screen flex flex-col'>
         <Header />
         {isLoading ? <Loader /> : <UsersListing />}

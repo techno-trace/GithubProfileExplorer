@@ -8,11 +8,40 @@ interface UseKeyboardShortcutProps {
 export const useKeyboardShortcut = ({ keyCombination, action }: UseKeyboardShortcutProps) => {
   const keysCurrentlyPressed = useRef<Set<string>>(new Set());
 
+  const normalizeKey = (key: string) => {
+    switch (key.toLowerCase()) {
+      case 'ctrl':
+      case 'control':
+      case 'controlleft':
+      case 'controlright':
+        return 'control';
+      case 'shift':
+      case 'shiftleft':
+      case 'shiftright':
+        return 'shift';
+      case 'alt':
+      case 'altleft':
+      case 'altright':
+        return 'alt';
+      case 'meta':
+      case 'metaleft':
+      case 'metaright':
+      case 'command':
+      case 'cmd':
+        return 'meta';
+      default:
+        return key.toLowerCase();
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      keysCurrentlyPressed.current.add(event.key);
+      const normalizedKey = normalizeKey(event.key);
+      keysCurrentlyPressed.current.add(normalizedKey);
 
-      const allKeysMatched = keyCombination.every((key) => keysCurrentlyPressed.current.has(key));
+      const allKeysMatched = keyCombination.every((key) =>
+        keysCurrentlyPressed.current.has(normalizeKey(key)),
+      );
 
       if (allKeysMatched) {
         event.preventDefault();
@@ -21,7 +50,8 @@ export const useKeyboardShortcut = ({ keyCombination, action }: UseKeyboardShort
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      keysCurrentlyPressed.current.delete(event.key);
+      const normalizedKey = normalizeKey(event.key);
+      keysCurrentlyPressed.current.delete(normalizedKey);
     };
 
     window.addEventListener('keydown', handleKeyDown);

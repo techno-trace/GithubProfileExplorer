@@ -20,9 +20,18 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    },
+    }
   },
-  "include": ["src", "tests", "tests-examples"],
+  "include": [
+    "src",
+    "tests",
+    "tests-examples",
+    "*.config.cjs",
+    "*.config.js",
+    "*.config.ts",
+    "*.setup.ts",
+    "*.config.mjs"
+  ],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

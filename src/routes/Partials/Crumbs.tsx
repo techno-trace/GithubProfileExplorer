@@ -15,6 +15,7 @@ interface CrumbsProps {
 const Crumbs: React.FC<CrumbsProps> = ({ pages }) => {
   return (
     <nav
+      data-testid='ghapp-breadcrumbs'
       className='flex border-b border-gray-200 bg-white dark:bg-sky-900 dark:border-gray-100'
       aria-label='Breadcrumb'
     >

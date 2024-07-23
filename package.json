@@ -1,44 +1,48 @@
 {
-  "name": "react-github-profile-explorer",
+  "name": "GithubProfileExplorer",
   "description": "This is a github profile explorer.",
-  "version": "1.0",
+  "version": "1.1",
   "private": false,
   "author": {
     "name": "Digambar Saha",
     "email": "loveanimesh143@gmail.com",
     "url": "https://github.com/techno-trace"
   },
+  "type": "module",
+  "homepage": "https://techno-trace.github.io/GithubProfileExplorer",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:local": "tsc && vite build -m development",
     "preview": "vite preview",
-    "lint": "yarn run lint:ts",
-    "lint:ts": "tsc && yarn lint:eslint",
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
-    "format:ts": "prettier --write 'src/**/*.{ts,tsx}' && yarn lint:eslint --fix",
-    "format": "yarn run format:ts",
     "format:check": "prettier -c 'src/**/*.{ts,tsx}'",
-    "test": "jest"
+    "test:ui": "playwright test --ui",
+    "test": "playwright test"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
+    "@playwright/test": "^1.45.3",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "@vitejs/plugin-react": "^4.3.1",
     "axios": "^1.7.2",
     "moment": "^2.30.1",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6.22.2",
+    "vite": "^5.3.4",
+    "vite-plugin-eslint": "^1.8.1",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@playwright/test": "^1.45.3",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/line-clamp": "^0.4.4",
-    "@tailwindcss/typography": "^0.5.13",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^14.5.2",
@@ -48,9 +52,7 @@
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
-    "cypress": "^13.13.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -66,12 +68,9 @@
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.39",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.6.5",
     "sass": "^1.71.1",
     "tailwindcss": "^3.4.6",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.5",
-    "vite-plugin-eslint": "^1.8.1"
+    "typescript": "^5.3.3"
   },
   "jest": {
     "roots": [
@@ -82,7 +81,7 @@
       "!src/**/*.d.ts"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
+      "<rootDir>/global.setup.ts"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",

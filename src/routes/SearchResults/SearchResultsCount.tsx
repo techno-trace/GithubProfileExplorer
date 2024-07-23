@@ -13,7 +13,10 @@ const SearchResultsCount: React.FC = () => {
   return (
     <>
       <Crumbs pages={pages} />
-      <div className='relative bg-indigo-600 dark:bg-indigo-900'>
+      <div
+        data-testid='ghapp-search-results-count'
+        className='relative bg-indigo-600 dark:bg-indigo-900'
+      >
         <div className='mx-auto max-w-xl py-3 px-3 sm:px-6 lg:px-8'>
           <div className='pr-16 sm:px-16 sm:text-center'>
             <p className='font-medium text-white'>

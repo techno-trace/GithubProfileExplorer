@@ -2,6 +2,10 @@ import React from 'react';
 import Logo from '../Partials/Logo';
 
 const Hero = () => {
+  const BASE_URL =
+    import.meta.env.MODE === 'production'
+      ? 'https://techno-trace.github.io/GithubProfileExplorer'
+      : window.location.origin;
   return (
     <div className='relative bg-white dark:bg-slate-800'>
       <div className='mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8'>
@@ -12,7 +16,7 @@ const Hero = () => {
               <div className='relative rounded-full py-1 px-3 text-sm leading-6 text-gray-500 dark:text-gray-100 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-300/10 dark:hover:ring-gray-300/20 shadow-xl'>
                 Search for users by the username, you just guess & the app will do the rest.{' '}
                 <a
-                  href='https://github.com'
+                  href='https://github.com/techno-trace/GithubProfileExplorer'
                   className='whitespace-nowrap font-semibold text-indigo-600'
                 >
                   <span className='absolute inset-0' aria-hidden='true' />
@@ -31,8 +35,8 @@ const Hero = () => {
         <div className='relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0'>
           <img
             className='aspect-[3/2] w-full bg-gray-50 object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full'
-            src='/src/assets/hero.avif'
-            alt=''
+            src={BASE_URL + `/hero.avif`}
+            alt='Hero Image'
           />
         </div>
       </div>

@@ -13,6 +13,7 @@ const Pagination = () => {
 
   return (
     <nav
+      data-testid='ghapp-pagination'
       className='flex items-center justify-between border-t border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 sm:px-6'
       aria-label='Pagination'
     >
@@ -25,12 +26,14 @@ const Pagination = () => {
       </div>
       <div className='flex flex-1 justify-between sm:justify-end'>
         <Link
+          data-testid='ghapp-pagination-prev'
           to={`/search/${searchTerm}${currentPage > 1 ? '?page=' + (currentPage - 1) : ''}`}
           className='relative inline-flex items-center rounded-md shadow border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50'
         >
           Previous
         </Link>
         <Link
+          data-testid='ghapp-pagination-next'
           to={`/search/${searchTerm}?page=${currentPage < lastPage ? currentPage + 1 : lastPage}`}
           className='relative ml-3 inline-flex items-center rounded-md shadow border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50'
         >

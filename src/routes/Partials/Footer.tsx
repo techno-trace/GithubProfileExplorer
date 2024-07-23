@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className='bg-gray-100 dark:bg-slate-900 shadow-inner p-4 flex justify-between items-center dark:border-t dark:border-indigo-800'>
       <a
-        href='https://github.com'
+        href='https://github.com/techno-trace/GithubProfileExplorer'
         target='_blank'
         rel='noopener noreferrer'
         className='text-blue-600 hover:underline'
@@ -21,8 +21,13 @@ const Footer = () => {
         </button>
       </a>
       <div className='bg-gray-200 rounded-md p-2 shadow-sm'>
-        <p className='text-sm'>API Requests: {apiRequestsMade}</p>
-        <p className='text-sm'>Searches Made: {searchesMade}</p>
+        <p className='text-sm'>
+          API Requests: <span data-testid='ghapp-apiRequestsMade'>{apiRequestsMade}</span>
+        </p>
+        <p className='text-sm'>
+          Searches Made:
+          <span data-testid='ghapp-searchesMade'>{searchesMade}</span>
+        </p>
       </div>
     </footer>
   );
