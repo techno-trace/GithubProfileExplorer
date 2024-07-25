@@ -18,7 +18,13 @@
     "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
     "format:check": "prettier -c 'src/**/*.{ts,tsx}'",
     "test:ui": "playwright test --ui",
-    "test": "playwright test"
+    "test:all": "playwright test",
+    "test:firefox": "playwright test --project=firefox",
+    "test:chromium": "playwright test --project=chromium",
+    "test:safari": "playwright test --project=safari",
+    "test:mobile_chrome": "playwright test --project=mobile_chrome",
+    "test:mobile_safari": "playwright test --project=mobile_safari",
+    "test:chrome": "playwright test --project=chrome"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",

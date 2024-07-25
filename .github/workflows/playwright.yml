@@ -6,28 +6,38 @@ on:
       - master
   pull_request:
     branches:
-      - testing
+      - master
 
 jobs:
   test:
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.45.1-jammy
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+        uses: actions/checkout@v4
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm i
 
       - name: Run Playwright tests
-        run: pnpm test
+        run: pnpm test:all
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
