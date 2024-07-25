@@ -130,6 +130,10 @@ OR
     npm test
 ```
 
+![Chrome](https://github.com/techno-trace/GithubProfileExplorer/blob/master/demo/TestResults.PNG)
+![Firefox](https://github.com/techno-trace/GithubProfileExplorer/blob/master/demo/TestResultsFirefox.PNG)
+![Safari](https://github.com/techno-trace/GithubProfileExplorer/blob/master/demo/TestResultsSafari.PNG)
+
 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
